@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hydrus 2040 · Mars</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- ============ MISSION MAP · MARS ============ -->
+  <section id="map" class="screen active">
+    <div class="stage" id="map-stage">
+      <div class="mp-bg"></div><div class="mp-grid"></div>
+      <header class="mp-top">
+        <p class="kicker">HYDRUS 2040 · FOLLOW THE WATER</p>
+        <h1 id="mp-title">MISSION MAP · MARS</h1>
+        <p class="sub" id="mp-sub">JEZERO CRATER · 5 SECTORS · 12 MINIGAMES · ABOUT 10 MINUTES</p>
+      </header>
+      <button class="mp-back" id="mp-back">◂ BACK</button>
+      <svg class="mp-svg" id="mp-svg" viewBox="0 0 1300 1080"></svg>
+      <div class="mp-card hidden" id="mp-card"></div>
+      <aside class="mp-side">
+        <h2>MISSION PLAN</h2>
+        <div id="mp-plan"></div>
+        <h2>CREW</h2>
+        <div class="crew-n" id="crew-n"></div>
+        <div class="crew-keys" id="crew-keys"></div>
+        <button class="start" id="start">START MISSION ▸</button>
+        <p class="hint">or press any middle key (W · V · O · ↓)</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ PLANET LEVEL ============ -->
+  <section id="play" class="screen">
+    <canvas id="game" width="1920" height="1080"></canvas>
+    <!-- 1 player: the rover broke → extra life or restart the sector -->
+    <div class="pause hidden" id="downc" role="dialog" aria-label="Rover down">
+      <div class="pause-box">
+        <h2 class="red">ROVER DOWN</h2>
+        <p class="why" id="downc-why"></p>
+        <button data-act="life">♥ USE EXTRA LIFE<small id="downc-life">Keep going from here · 1 per sector</small></button>
+        <button data-act="restart">RESTART SECTOR<small>Start this sector again from the beginning</small></button>
+        <p>◀ ▶ choose · middle key: select</p>
+      </div>
+    </div>
+    <!-- ESC: pause menu -->
+    <div class="pause hidden" id="pause" role="dialog" aria-label="Paused">
+      <div class="pause-box">
+        <h2>PAUSED</h2>
+        <button data-act="resume">RESUME</button>
+        <button data-act="map">MISSION MAP</button>
+        <button data-act="menu">MAIN MENU</button>
+        <p>ESC: resume · ◀ ▶ choose · middle key: select</p>
+        <small>Going to the map or the menu restarts this sector later.</small>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/planets.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/draw.js"></script>
+  <script src="js/minigames.js"></script>
+  <script src="js/minigames2.js"></script>
+  <script src="js/minigames3.js"></script>
+  <script src="js/level.js"></script>
+  <script src="js/map.js"></script>
+</body>
+</html>

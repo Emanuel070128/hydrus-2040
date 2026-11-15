@@ -1,0 +1,84 @@
+/* HYDRUS 2040 · MARS LEVEL — same look as the title screen: cold blues, Orbitron, glass panels */
+@font-face { font-family: 'Orbitron'; src: url(../../assets/fonts/orbitron.woff2) format('woff2'); }
+@font-face { font-family: 'Exo2'; src: url(../../assets/fonts/exo2.woff2) format('woff2'); font-weight: 700; }
+@font-face { font-family: 'Exo2'; src: url(../../assets/fonts/exo2-400.woff2) format('woff2'); font-weight: 400; }
+:root { --ice: #e0f2fe; --cyan: #38bdf8; --sky: #7dd3fc; --navy: #04122b; --green: #34d399; --amber: #fbbf24; --red: #f43f5e; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; background: #01030a; overflow: hidden; font-family: 'Exo2', sans-serif; color: var(--ice); }
+.screen { position: fixed; inset: 0; display: none; }
+.screen.active { display: block; }
+#game { position: absolute; left: 50%; top: 50%; width: min(100vw, 177.78vh); height: min(56.25vw, 100vh); transform: translate(-50%, -50%); }
+.stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; transform-origin: center; overflow: hidden; }
+
+/* map */
+.mp-bg { position: absolute; left: 0; top: 0; width: 1300px; height: 1080px; background: url(../../assets/images/mars.jpg) 48% 52% / 340% no-repeat; filter: saturate(1.1) brightness(.9) contrast(1.1); }
+.mp-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(1,3,10,0) 40%, rgba(1,3,10,.8) 98%), linear-gradient(rgba(1,3,10,.75), rgba(1,3,10,0) 26%); }
+.mp-grid { position: absolute; left: 0; top: 0; width: 1300px; height: 1080px; background-image: linear-gradient(rgba(56,189,248,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,.08) 1px, transparent 1px); background-size: 60px 60px; }
+.mp-top { position: absolute; left: 60px; top: 42px; }
+.kicker { font-family: 'Orbitron'; font-size: 18px; letter-spacing: 8px; color: var(--sky); }
+.mp-top h1 { font-family: 'Orbitron'; font-weight: 400; font-size: 58px; letter-spacing: 12px; color: var(--sky); text-shadow: 0 0 26px rgba(56,189,248,.6); margin: 8px 0; }
+.sub { font-family: 'Orbitron'; font-size: 17px; letter-spacing: 5px; color: var(--ice); opacity: .85; }
+.mp-svg { position: absolute; left: 0; top: 0; width: 1300px; height: 1080px; }
+.mp-svg .pin { cursor: pointer; }
+.mp-svg text { font-family: 'Orbitron'; }
+.mp-card { position: absolute; width: 440px; padding: 22px 24px; background: rgba(4,18,43,.92); border: 2px solid var(--cyan); box-shadow: 0 0 24px rgba(56,189,248,.35);
+  clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px); }
+.mp-card b { font-family: 'Orbitron'; font-weight: 400; letter-spacing: 4px; color: var(--sky); font-size: 18px; }
+.mp-card p { margin-top: 10px; font-size: 21px; line-height: 1.35; }
+.mp-card .tag { display: inline-block; margin-top: 10px; margin-right: 8px; font-family: 'Orbitron'; font-size: 13px; letter-spacing: 3px; padding: 6px 10px; border: 1px solid currentColor; }
+.hidden { display: none !important; }
+.mp-side { position: absolute; right: 40px; top: 40px; width: 560px; height: 1000px; padding: 28px 30px; background: rgba(4,18,43,.82); border: 2px solid var(--cyan);
+  box-shadow: 0 0 30px rgba(56,189,248,.3); clip-path: polygon(22px 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%, 0 22px); }
+.mp-side h2 { font-family: 'Orbitron'; font-weight: 400; font-size: 18px; letter-spacing: 6px; color: var(--sky); margin: 6px 0 14px; }
+.sec { display: flex; gap: 14px; align-items: center; padding: 10px 12px; margin-bottom: 8px; border: 1px solid rgba(56,189,248,.35); background: rgba(56,189,248,.05); }
+.sec .n { font-family: 'Orbitron'; font-size: 26px; color: var(--cyan); width: 30px; text-align: center; }
+.sec b { display: block; font-family: 'Orbitron'; font-weight: 400; font-size: 15px; letter-spacing: 3px; }
+.sec small { font-size: 16px; color: #cfe3ff; }
+.cp { font-family: 'Orbitron'; font-size: 11px; letter-spacing: 3px; color: var(--green); margin: -2px 0 8px 46px; }
+.crew-n { display: flex; gap: 10px; margin-bottom: 14px; }
+.crew-n button { flex: 1; height: 54px; font-family: 'Orbitron'; font-size: 20px; letter-spacing: 3px; color: var(--ice); background: rgba(4,18,43,.9); border: 2px solid rgba(56,189,248,.5); cursor: pointer; }
+.crew-n button.on { background: #075985; border-color: var(--cyan); box-shadow: 0 0 18px rgba(56,189,248,.6); }
+.crew-keys { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 18px; }
+.ck { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid; background: rgba(4,18,43,.8); }
+.ck input { width: 110px; background: transparent; border: none; border-bottom: 1px solid currentColor; color: inherit; font-family: 'Orbitron'; font-size: 15px; letter-spacing: 2px; outline: none; }
+.ck kbd { font-family: 'Orbitron'; font-size: 14px; padding: 4px 7px; border: 1px solid currentColor; }
+.start { width: 100%; height: 76px; font-family: 'Orbitron'; font-size: 24px; letter-spacing: 6px; color: var(--ice); background: #075985; border: 2px solid var(--cyan); cursor: pointer;
+  box-shadow: 0 0 26px rgba(56,189,248,.55); clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px); }
+.start:hover { background: #0369a1; }
+.hint { margin-top: 10px; text-align: center; font-family: 'Orbitron'; font-size: 13px; letter-spacing: 3px; color: var(--sky); }
+
+/* spheres unlock in order */
+.sec.done { border-color: rgba(52,211,153,.6); background: rgba(52,211,153,.08); } .sec.done .n { color: var(--green); }
+.sec.cur { border-color: var(--cyan); box-shadow: 0 0 14px rgba(56,189,248,.45); }
+.sec.locked { opacity: .5; }
+.sec small { font-size: 14px; }
+.mp-card .st { display: block; margin-top: 12px; font-family: 'Orbitron'; font-size: 13px; letter-spacing: 3px; color: var(--green); }
+.crew-n:empty { display: none; }
+.ck input[readonly] { border-bottom-color: transparent; }
+/* back button on the map */
+.mp-back { position: absolute; left: 1080px; top: 48px; height: 50px; padding: 0 22px; font-family: 'Orbitron'; font-size: 16px; letter-spacing: 4px; color: var(--ice); background: rgba(4,18,43,.85); border: 2px solid var(--cyan); cursor: pointer;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); }
+.mp-back:hover { background: #075985; }
+
+/* ESC pause menu */
+.pause { position: absolute; inset: 0; z-index: 5; display: grid; place-items: center; background: rgba(1,3,10,.72); backdrop-filter: blur(3px); }
+.pause-box { width: min(520px, 90vw); padding: 34px 36px; text-align: center; background: rgba(4,18,43,.95); border: 2px solid var(--cyan); box-shadow: 0 0 40px rgba(56,189,248,.45);
+  clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px); }
+.pause-box h2 { font-family: 'Orbitron'; font-weight: 400; font-size: 40px; letter-spacing: 12px; color: var(--sky); text-shadow: 0 0 20px rgba(56,189,248,.6); margin-bottom: 22px; }
+.pause-box button { display: block; width: 100%; height: 62px; margin-top: 12px; font-family: 'Orbitron'; font-size: 20px; letter-spacing: 5px; color: var(--ice); background: rgba(4,18,43,.9);
+  border: 2px solid rgba(56,189,248,.5); cursor: pointer; }
+.pause-box button.on, .pause-box button:hover, .pause-box button:focus-visible { background: #075985; border-color: var(--cyan); box-shadow: 0 0 18px rgba(56,189,248,.6); outline: none; }
+.pause-box p { margin-top: 18px; font-family: 'Orbitron'; font-size: 12px; letter-spacing: 3px; color: var(--sky); }
+.pause-box small { display: block; margin-top: 8px; font-size: 15px; color: #cfe3ff; }
+
+/* map background: NASA photo of the Martian horizon, shown at its own size (no heavy zoom) */
+.mp-bg { background: #01030a url(../../assets/images/mars-map-bg.jpg) center top / cover no-repeat; filter: none; }
+/* the back button sits above the map drawing (the SVG used to catch its clicks) */
+.mp-back { z-index: 3; }
+
+/* 1 player: rover down → choose extra life or restart */
+.pause-box h2.red { color: var(--red); text-shadow: 0 0 20px rgba(244,63,94,.6); }
+.pause-box .why { margin: -8px 0 8px; font-size: 18px; letter-spacing: 3px; color: #fecaca; }
+.pause-box button small { display: block; margin-top: 4px; font-family: 'Exo2'; font-size: 14px; letter-spacing: 1px; color: #cfe3ff; }
+.pause-box button { height: auto; padding: 12px 10px; }
+.pause-box button:disabled { opacity: .35; cursor: not-allowed; background: rgba(4,18,43,.9); border-color: rgba(100,116,139,.6); box-shadow: none; }
