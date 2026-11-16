@@ -33,7 +33,7 @@ The challenge asks for a game that teaches how space missions are designed. Hydr
 - shielding vs. weight;
 - the communication delay with Earth.
 
-It is important because water is the key resource for future human exploration. The game turns NASA facts into decisions that anyone, of any background, can understand and remember.
+When systems fail thousands of kilometers from home, the manuals stop helping. Your only real tool is your ability to improvise with what you have. In this game, survival doesn't depend on luck. It depends on your ability to decide in seconds, own the consequences and stay calm when everything points to disaster.
 
 ## Link to project demo
 _Add here the public link to the 30-second video or the 7-slide deck (YouTube, Google Drive, etc.)._
