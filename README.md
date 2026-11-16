@@ -99,11 +99,11 @@ A complete mission, from the drawing board to the final report, in about 10 to 1
   | Crew | Player 1 | Player 2 | Player 3 | Player 4 |
   |---|---|---|---|---|
   | 1 player | Q laser · W jump / hold shield · E grab ice | | | |
-  | 2 players | any key: jump / hold shield | C or V laser · B grab ice | | |
-  | 3 players | any key: jump / hold shield | any key: laser | any key: grab ice | |
-  | 4 players | any key: jump | any key: laser | any key: hold shield | any key: grab ice |
+  | 2 players | Q, W or E: jump / hold shield | C or V: laser · B: grab ice | | |
+  | 3 players | Q, W or E: jump / hold shield | C, V or B: laser | I, O or P: grab ice | |
+  | 4 players | Q, W or E: jump | C, V or B: laser | I, O or P: hold shield | ←, ↓ or →: grab ice |
 
-  With 3 or 4 players, each player has **one job**, and any of their 3 keys does it. The game shows it on screen as the middle key.
+  With 3 or 4 players, each player has **one job**. Any of **their own 3 keys** from the table above does it (Player 3 can press I, O or P), but never another player's keys. The game shows the job on screen under the middle key.
 
 - **Hangar decisions carry into the level.** Each choice changes what happens on the surface:
   - Energy depends on the power sources and the sunlight at the destination.
