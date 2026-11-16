@@ -85,7 +85,7 @@ A complete mission, from the drawing board to the final report, in about 10 to 1
 **ESC** opens a pause menu with three options: resume, mission map or main menu.
 
 ### How does it work?
-- **Same keys on every screen:**
+- **Each player has 3 keys.** They are used in the menus, the launch poll, the team votes and the minigames:
 
   | Player | Left | Middle | Right |
   |---|---|---|---|
@@ -93,6 +93,17 @@ A complete mission, from the drawing board to the final report, in about 10 to 1
   | ■ Player 2 | C | V | B |
   | ● Player 3 | I | O | P |
   | ◆ Player 4 | ← | ↓ | → |
+
+- **While driving the rover, the jobs are split among the crew.** The more players, the fewer jobs each one has:
+
+  | Crew | Player 1 | Player 2 | Player 3 | Player 4 |
+  |---|---|---|---|---|
+  | 1 player | Q laser · W jump / hold shield · E grab ice | | | |
+  | 2 players | any key: jump / hold shield | C or V laser · B grab ice | | |
+  | 3 players | any key: jump / hold shield | any key: laser | any key: grab ice | |
+  | 4 players | any key: jump | any key: laser | any key: hold shield | any key: grab ice |
+
+  With 3 or 4 players, each player has **one job**, and any of their 3 keys does it. The game shows it on screen as the middle key.
 
 - **Hangar decisions carry into the level.** Each choice changes what happens on the surface:
   - Energy depends on the power sources and the sunlight at the destination.
