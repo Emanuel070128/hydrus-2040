@@ -18,6 +18,22 @@ function renderDestinations() {
     </button>`).join('');
 }
 
+/* shrink text and photos until every card (fun fact included) fits; works for any screen size and font */
+function fitDestCards() {
+  const cols = $('#dest-cols');
+  if (!cols || !$('#screen-destinations').classList.contains('active')) return;
+  const cards = [...cols.querySelectorAll('.dest-card')];
+  const overflows = () => cards.some((c) => c.scrollHeight > c.clientHeight + 1);
+  let k = 1;
+  cols.classList.remove('fit-scroll');
+  cols.style.setProperty('--k', k);
+  while (overflows() && k > 0.5) { k = Math.round((k - 0.04) * 100) / 100; cols.style.setProperty('--k', k); }
+  cols.classList.toggle('fit-scroll', overflows());
+}
+let fitTimer = 0;
+addEventListener('resize', () => { clearTimeout(fitTimer); fitTimer = setTimeout(fitDestCards, 80); });
+if (document.fonts) document.fonts.ready.then(fitDestCards);
+
 function chooseDestination(id) {
   chosenDestination = DESTINATIONS.find((d) => d.id === id);
   document.querySelectorAll('.dest-card').forEach((c) => c.classList.toggle('selected', c.dataset.id === id));
@@ -43,5 +59,7 @@ SCREENS.destinations = {
     renderDestinations();
     $('#dest-choice').textContent = 'Pick a world to continue.';
     $('#dest-go').disabled = true;
+    fitDestCards();                                   // reading scrollHeight forces layout, so this works right away
+    setTimeout(fitDestCards, 300);                    // again once the planet photos and fonts have settled
   }
 };

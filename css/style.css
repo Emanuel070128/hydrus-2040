@@ -730,6 +730,19 @@ small.ok { color: #86efac; } small.warn { color: #fde68a; } small.bad { color: #
 .dest-fact { margin-top: 6px; }
 .dest-card .planet-photo.big { width: min(56%, 21vh); }
 
+/* adaptive cards: the row keeps the space left on screen, and js/destinations.js lowers --k
+   (text + photo scale) until every card, fun fact included, fits on any window size */
+.dest-cols { --k: 1; grid-template-rows: minmax(0, 1fr); }
+.dest-card { min-height: 0; padding: calc(22px * var(--k)) calc(20px * var(--k)) calc(18px * var(--k)); }
+.dest-card .planet-photo.big { width: calc(min(56%, 21vh) * var(--k) * var(--k) * var(--k)); margin: calc(10px * var(--k)) 0 calc(12px * var(--k)); flex-shrink: 0; }
+.dest-card .dest-name  { font-size: calc(clamp(20px, 2.3vw, 34px) * var(--k)); }
+.dest-card .dest-title { font-size: calc(clamp(14px, 1.3vw, 19px) * var(--k)); margin: calc(4px * var(--k)) 0 calc(10px * var(--k)); }
+.dest-card .dest-desc  { font-size: calc(clamp(13px, 1.05vw, 16px) * var(--k)); margin-bottom: calc(12px * var(--k)); max-width: 42ch; }
+.dest-card .dest-fact  { max-width: 44ch; }
+.dest-card .dest-fact  { font-size: calc(clamp(12px, .95vw, 15px) * var(--k)); padding: calc(10px * var(--k)) calc(12px * var(--k)); flex-shrink: 0; }
+.dest-card .dest-fact b { font-size: calc(11px * var(--k)); }
+.dest-cols.fit-scroll .dest-card { overflow-y: auto; }   /* tiny windows only: last resort, scroll inside the card */
+
 /* ===== MUSIC: ♪ on/off button and the first "click to begin" gate ===== */
 .music-btn { position: fixed; left: 8px; bottom: 8px; z-index: 60; width: 30px; height: 30px; border-radius: 50%;
   border: 1px solid rgba(125, 211, 252, .5); background: rgba(4, 18, 43, .7); color: var(--light-blue); cursor: pointer;
