@@ -1,5 +1,6 @@
 /* =====================================================
    HYDRUS 2040 — MUSIC (made with code, no audio files)
+   AI disclosure: this music and its code were composed with help from AI (Claude, Anthropic).
    One original theme for each part of the game:
      title                          → 'chant'    deep male choir, slow, suspense
      intro, destinations, briefing  → 'dawn'     soft choir pads and glass bells

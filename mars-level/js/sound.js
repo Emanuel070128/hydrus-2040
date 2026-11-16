@@ -1,5 +1,6 @@
 /* =====================================================
    HYDRUS 2040 · SOUND (made with code, no audio files)
+   AI disclosure: this music, these sound effects and their code were made with help from AI (Claude, Anthropic).
    SND.play('jump')    SND.music('drive' | 'calm' | 'emer' | 'drill' | 'win' | 'off')
    ===================================================== */
 const SND = (() => {
