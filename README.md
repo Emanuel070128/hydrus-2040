@@ -36,7 +36,7 @@ The challenge asks for a game that teaches how space missions are designed. Hydr
 When systems fail thousands of kilometers from home, the manuals stop helping. Your only real tool is your ability to improvise with what you have. In this game, survival doesn't depend on luck. It depends on your ability to decide in seconds, own the consequences and stay calm when everything points to disaster.
 
 ## Link to project demo
-_Add here the public link to the 30-second video or the 7-slide deck (YouTube, Google Drive, etc.)._
+Presentation (Google Drive): https://drive.google.com/file/d/1Gg6Qis9DCMXYKR4GE0BIbidACW9vRLsA/view?usp=sharing
 
 ## Link to final project
 - **Play online (GitHub Pages):** https://emanuel070128.github.io/hydrus-2040/
